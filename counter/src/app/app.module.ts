@@ -3,18 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TodosComponent } from './MyComponets/todos/todos.component';
-import { FormsModule } from '@angular/forms';
+import { CountComponent } from './MyComponets/count/count.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodosComponent
+    CountComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule 
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

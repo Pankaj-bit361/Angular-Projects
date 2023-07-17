@@ -1,21 +1,35 @@
 import { Component } from '@angular/core';
-import { Todo } from 'src/app/Todo';
+import { Todo } from './Todo';
 
 @Component({
-  selector: 'app-todo-list',
-  template: `
-    <h2>Todo List</h2>
-    <ul>
-      <li *ngFor="let todo of todos">
-        {{ todo.title }}
-      </li>
-    </ul>
-  `,
+  selector: 'app-todos',
+  templateUrl: './todos.component.html',
+  styleUrls: ['./todos.component.css']
 })
 export class TodosComponent {
-  todos: Todo[] = [
-    { id: 1, title: 'Learn Angular', active: false },
-    { id: 2, title: 'Build a Todo App', active: false },
-    { id: 3, title: 'Master TypeScript', active: false },
-  ];
+  todos: Todo[] = [];
+  newTodo: string = '';
+
+  addTodo() {
+    if (this.newTodo.trim() !== '') {
+      const todo: Todo = {
+        id: this.todos.length + 1,
+        title: this.newTodo,
+        completed: false
+      };
+      this.todos.push(todo);
+      this.newTodo = '';
+    }
+  }
+
+  deleteTodo(todo: Todo) {
+    const index = this.todos.indexOf(todo);
+    if (index !== -1) {
+      this.todos.splice(index, 1);
+    }
+  }
+
+  toggleCompleted(todo: Todo) {
+    todo.completed = !todo.completed;
+  }
 }
